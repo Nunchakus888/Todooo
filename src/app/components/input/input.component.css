@@ -1,0 +1,19 @@
+input {
+    background: #1d94bb;
+    width: 200px;
+    height: 35px;
+    display: inline-block;
+}
+
+button {
+    margin-left: 0;
+    height: 35px;
+    width: 90px;
+    display: inline-block;
+    background: deepskyblue;
+}
+
+div {
+    text-align: center;
+    margin-bottom: 20px;
+}

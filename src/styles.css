@@ -1,0 +1,30 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #00c853;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    /*1.5是行高（line-height）.1.5表示是14px的1.5倍*/
+    font: 14px/1.5 'Microsoft YaHei UI', 'Helvetica Neue', Tahoma, 'Simsun', Arial, Helvetica, STHeiti;
+}
+
+li {
+    list-style: none;
+}
+
+
+h1{ font-size:2em; margin: .67em 0;}
+h2{ font-size:1.5em; margin: .75em 0 }
+h3{ font-size:1.17em; margin: .83em 0 }
+/*h4, p,blockquote, ul,fieldset, form,ol, dl, dir,menu { margin: 1.12em 0}*/
+h5 { font-size:.83em; margin: 1.5em 0 }
+h6{ font-size:.75em; margin: 1.67em 0 }
+h1, h2, h3, h4,h5, h6, b,strong  { font-weight: bolder; text-align: center; }

@@ -1,0 +1,24 @@
+<div>
+
+    <button md-button (click)="openDialog()">Launch dialog</button>
+
+
+    <md-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+        <md-radio-button class="example-radio-button" >
+            sdfafasdfasf
+        </md-radio-button>
+        <md-radio-button class="example-radio-button" >
+            4252435
+        </md-radio-button>
+    </md-radio-group>
+
+    <section class="example-section">
+        <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>
+        <md-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</md-checkbox>
+    </section>
+    <!--<md-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+      <md-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+        {{season}}
+      </md-radio-button>
+    </md-radio-group>-->
+</div>
