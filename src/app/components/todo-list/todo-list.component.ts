@@ -13,7 +13,6 @@ import {TransferDataService} from '../../services/transfer-data-service';
     selector: 'app-todo-list',
     templateUrl: './todo-list.component.html',
     styleUrls: ['./todo-list.component.css'],
-    providers: [TransferDataService],
     entryComponents: [TodoComponent]
 })
 export class TodoListComponent implements OnInit {
@@ -27,10 +26,9 @@ export class TodoListComponent implements OnInit {
         })
     }
 
-    submitTodo(fd) {
-        console.log('submitAddTodosubmitAddTodo');
-        console.log(fd);
-        this.store.dispatch({type: TodoActions.ADD_TODO, payload: {}});
+    submitTodo(todoData) {
+        console.log(todoData);
+        this.store.dispatch({type: TodoActions.ADD_TODO, payload: todoData});
     }
 
     removeTodo() {

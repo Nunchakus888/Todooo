@@ -29,6 +29,7 @@ import {CompletedComponent} from './components/completed/completed.component';
 
 /*NgRx*/
 import {todoReducer} from './reducer/todo.reducer';
+import {TransferDataService} from './services/transfer-data-service';
 
 /*NgRx*/
 @NgModule({
@@ -81,7 +82,11 @@ import {todoReducer} from './reducer/todo.reducer';
      * create the ComponentFactory for it.
      */
     entryComponents: [DialogComponent],
-    providers: [],
+    /**
+     * 若在组建中注入则每个组件的该服务对象是一个单独的实例
+     * 若在全局模块中注入, 则全局仅有该对象一个实例
+     */
+    providers: [TransferDataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

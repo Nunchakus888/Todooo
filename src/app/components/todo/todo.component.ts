@@ -6,7 +6,6 @@ import {TodoModel} from '../../models/todo.model';
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
-    providers: [TransferDataService],
     styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
