@@ -3,6 +3,10 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
+import {StoreModule} from '@ngrx/store'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+
+
 import {AppRouterModule} from './router/app.router.module';
 /*material-ui-lib*/
 import {MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/material'
@@ -15,7 +19,6 @@ import {MdDialogModule} from '@angular/material';
 
 /*Components*/
 import {AppComponent} from './app.component';
-import {InputComponent} from './components/input/input.component';
 import {TodoComponent} from './components/todo/todo.component';
 import {TodoListComponent, DialogComponent} from './components/todo-list/todo-list.component';
 import {DetailsComponent} from './components/details/details.component';
@@ -24,10 +27,13 @@ import {HeaderComponent} from './components/header/header.component';
 import {CompletedComponent} from './components/completed/completed.component';
 /*Components*/
 
+/*NgRx*/
+import {todoReducer} from './reducer/todo.reducer';
+
+/*NgRx*/
 @NgModule({
     declarations: [
         AppComponent,
-        InputComponent,
         TodoComponent,
         DialogComponent,
         TodoListComponent,
@@ -46,7 +52,13 @@ import {CompletedComponent} from './components/completed/completed.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRouterModule
+        AppRouterModule,
+        //static provideStore(_reducer: any, _initialState?: any): ModuleWithProviders;
+        StoreModule.provideStore(todoReducer),
+        StoreDevtoolsModule.instrumentOnlyWithExtension({
+            maxAge: 5,
+            monitor: todoReducer
+        })
     ],
     /**
      *This is for dynamically added components that are added using
@@ -69,8 +81,7 @@ import {CompletedComponent} from './components/completed/completed.component';
      * create the ComponentFactory for it.
      */
     entryComponents: [DialogComponent],
-    providers: [
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,29 +1,34 @@
-import {Input, Component, OnInit, Inject, ViewChild} from '@angular/core';
-import {MdInputModule} from '@angular/material';
-import {MdDatepickerModule} from '@angular/material';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {Input, Output, Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
+import {TransferDataService} from '../../services/transfer-data-service';
 import {TodoModel} from '../../models/todo.model';
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
+    providers: [TransferDataService],
     styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-    selectedOption: string;
-    @Input() data: TodoModel;
-
-    constructor() {
-
+    @Input() public data: TodoModel = {
+        id: '',
+        title: '',
+        content: '事件详情',
+        time: '',
+        completed: false,
+    };
+    @Input() private dialog;
+    minDate = new Date();
+    maxDate = new Date(2022, 12, 22);
+    myFilter = (d: Date) => d.getFullYear();
+    constructor(private service: TransferDataService) {
     }
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    onSubmit(todo: NgForm) {
+        this.service.dataChange.emit(todo);
+        this.dialog.close(true);
     }
 
-    // openDialog() {
-    //     const dialogRef = this.dialog.open(DialogComponent, {'data': {title: 'add todo..'}});
-    //     dialogRef.afterClosed().subscribe(result => {
-    //         this.selectedOption = result;
-    //     });
-    // }
 }

@@ -1,47 +1,73 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {MdRadioModule} from '@angular/material';
-import {MdCheckboxModule} from '@angular/material';
-import {MdDialog, MdDialogRef} from '@angular/material';
-import {MD_DIALOG_DATA} from '@angular/material';
+import {Input, Output, Component, OnInit, Inject, EventEmitter} from '@angular/core';
+import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
+import {TodoModel} from '../../models/todo.model';
 import {TodoComponent} from '../todo/todo.component';
+import * as TodoActions from '../../actions/todo.action';
+import {TransferDataService} from '../../services/transfer-data-service';
+
+
 @Component({
     selector: 'app-todo-list',
     templateUrl: './todo-list.component.html',
     styleUrls: ['./todo-list.component.css'],
+    providers: [TransferDataService],
     entryComponents: [TodoComponent]
 })
 export class TodoListComponent implements OnInit {
+    todoLists$: Observable<TodoModel[]>;
 
-    selectedOption: string;
-    constructor(public dialog: MdDialog) {
+    constructor(public dialog: MdDialog, private store: Store<TodoModel[]>, private service: TransferDataService) {
+        this.todoLists$ = store.select(todoLists$ => todoLists$);
+        service.dataChange.subscribe((value: any) => {
+            this.submitTodo(value);
+            console.log('service---receive---data');
+        })
+    }
+
+    submitTodo(fd) {
+        console.log('submitAddTodosubmitAddTodo');
+        console.log(fd);
+        this.store.dispatch({type: TodoActions.ADD_TODO, payload: {}});
+    }
+
+    removeTodo() {
+        this.store.dispatch({type: TodoActions.REMOVE_TODO, payload: {}});
+    }
+
+    updateTodo() {
+        this.store.dispatch({type: TodoActions.UPDATE_TODO, payload: {}});
     }
 
     ngOnInit() {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(DialogComponent, {'data': {title: 'add todo..'}});
-        dialogRef.afterClosed().subscribe(result => {
-            this.selectedOption = result;
+        const dialogRef = this.dialog.open(DialogComponent, {
+            disableClose: true,
+            // data: {}
         });
-    }
-
-    inputSomething(e) {
-        console.log(e);
+        dialogRef.afterClosed().subscribe(result => {
+            //todo..
+        });
     }
 
 }
 
 @Component({
     selector: 'app-dialog',
-    templateUrl: '../dialog/dialog.component.html',
+    template: '<app-todo [dialog]="dialog"></app-todo>',
     styleUrls: ['../dialog/dialog.component.css'],
 })
 
 export class DialogComponent {
-    constructor(@Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<DialogComponent>) {
+    @Input() public dialog = this.dialogRef;
+    // constructor(@Inject(MD_DIALOG_DATA) public dialog: MdDialogRef<DialogComponent>, public dialogRef: MdDialogRef<DialogComponent>) {
+    constructor(public dialogRef: MdDialogRef<DialogComponent>) {
     }
+
     // @ViewChild(MdDatepicker) datepicker: MdDatepicker<Date>;
 }
 

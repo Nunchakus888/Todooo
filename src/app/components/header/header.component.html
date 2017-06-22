@@ -1,10 +1,21 @@
-<nav>
+<header>
     <md-toolbar color="primary">
-        <span>{{title}}</span>
+
         <!--<md-icon class="example-icon">favorite</md-icon>-->
         <!--<md-icon class="example-icon">delete</md-icon>-->
-        <button md-fab><md-icon>check</md-icon></button>
-        <a md-fab routerLink="."><md-icon>check</md-icon></a>
-        <a md-mini-fab routerLink="."><md-icon>check</md-icon></a>
+        <button class="header-cell" md-fab>
+            <md-icon>{{title}}</md-icon>
+        </button>
+            <!--<a md-fab routerLink="."><md-icon>check</md-icon></a>
+            <a md-mini-fab routerLink="."><md-icon>check</md-icon></a>-->
     </md-toolbar>
-</nav>
+</header>
+
+<style>
+    .header-cell {
+        justify-content: flex-end;
+        align-items: center;
+
+    }
+
+</style>

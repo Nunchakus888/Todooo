@@ -1,16 +1,40 @@
-<div>
+<style>
+    .todo-lists {
+        width: 80vw;
+        htight: 35px;
+        margin: 0 10vw;
+    }
 
+    .todo-list {
+        border-bottom: 1px solid #3fdb9b;
+    }
+
+</style>
+
+<div class="content">
     <button md-button (click)="openDialog()">Launch dialog</button>
 
+    <md-nav-list class="todo-lists">
+        <md-list-item class="todo-list" *ngFor="let todo of todoLists$ | async">
+            <h3 md-line> {{todo.title}} </h3>
+            <a md-line href="">{{todo.content}}</a>
+            <button md-icon-button>
+                <md-icon>{{todo.id}}</md-icon>
+            </button>
+            <span>{{todo.time}}</span>
+            <md-checkbox>完成</md-checkbox>
+        </md-list-item>
+    </md-nav-list>
 
-    <md-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+
+    <!--<md-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
         <md-radio-button class="example-radio-button" >
             sdfafasdfasf
         </md-radio-button>
         <md-radio-button class="example-radio-button" >
             4252435
         </md-radio-button>
-    </md-radio-group>
+    </md-radio-group>-->
 
     <section class="example-section">
         <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>

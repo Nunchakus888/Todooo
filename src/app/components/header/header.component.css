@@ -1,7 +1,4 @@
-.example-icon {
-    padding: 0 0px;
-}
-
-.example-spacer {
-    flex: 1 1 auto;
+header {
+    display: flex;
+    flex: 0 0 auto;
 }

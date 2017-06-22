@@ -1,4 +1,17 @@
 form {
     overflow-y: scroll;
-    max-height: 35vw;
+    overflow-x: hidden;
+    max-height: 90vh;
+    width: 100%;
+}
+
+.input-width {
+    width: 80%;
+}
+
+.text-center {
+    text-align: center;
+}
+.button-center {
+    display: list-item;
 }

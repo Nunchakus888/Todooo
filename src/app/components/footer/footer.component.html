@@ -1,3 +1,22 @@
-<nav>
-  <a *ngFor="let item of menuList" routerLink="/{{item.url}}" routerLinkActive="active"><h3>{{item.title}}</h3></a>
-</nav>
+<footer>
+    <!--<a *ngFor="let item of menuList" routerLink="/{{item.url}}" routerLinkActive="active"><h3>{{item.title}}</h3></a>-->
+    <a routerLink="/list" routerLinkActive="active"><h3>list</h3></a>
+    <a routerLink="/completed" routerLinkActive="active"><h3>completed</h3></a>
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        flex: 0 0 auto;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: yellowgreen;
+    }
+    a {
+        flex: 0 0 25% ;
+        text-decoration: none;
+    }
+</style>
