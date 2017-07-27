@@ -23,7 +23,6 @@ import {TodoComponent} from './components/todo/todo.component';
 import {TodoListComponent, DialogComponent} from './components/todo-list/todo-list.component';
 import {DetailsComponent} from './components/details/details.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {HeaderComponent} from './components/header/header.component';
 import {CompletedComponent} from './components/completed/completed.component';
 /*Components*/
 
@@ -40,7 +39,6 @@ import {TransferDataService} from './services/transfer-data-service';
         TodoListComponent,
         DetailsComponent,
         FooterComponent,
-        HeaderComponent,
         CompletedComponent,
     ],
     imports: [
