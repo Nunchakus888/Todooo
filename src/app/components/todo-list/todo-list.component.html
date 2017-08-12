@@ -1,26 +1,49 @@
 <style>
-    .todo-lists {
-        width: 80vw;
-        htight: 35px;
-        margin: 0 10vw;
-    }
-
     .todo-list {
-        border-bottom: 1px solid #3fdb9b;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-flow: wrap;
+    }
+    .todo-card {
+        flex: 0 0 50%;
+    }
+    .example-header-image {
+        background-image: url('../../../assets/logo.jpg');
+        background-size: cover;
     }
 
 </style>
 
-<div>
+<div class="todo-list">
+    <button md-button (click)="openDialog()">Launch dialog</button>
+
+    <md-card class="todo-card" *ngFor="let todo of todoLists$ | async">
+        <md-card-header>
+            <div md-card-avatar class="example-header-image"></div>
+            <md-card-title>{{todo.title}}</md-card-title>
+            <md-card-subtitle>eeasdf</md-card-subtitle>
+        </md-card-header>
+        <!--<img md-card-image src="../../../assets/logo.jpg" style="width: 200px; height: 200px">-->
+        <md-card-content>
+            <p>
+                {{todo.content}}
+            </p>
+        </md-card-content>
+        <md-card-actions>
+            <button md-button>LIKE</button>
+            <button md-button>SHARE</button>
+        </md-card-actions>
+    </md-card>
 
     <!--<md-grid-list cols="4" rowHeight="1:1">
         <md-grid-tile colspan="3">1</md-grid-tile>
         <md-grid-tile>2</md-grid-tile>
     </md-grid-list>-->
 
-    <button md-button (click)="openDialog()">Launch dialog</button>
+    <!--<button md-button (click)="openDialog()">Launch dialog</button>-->
 
-    <md-nav-list class="todo-lists">
+    <!--<md-nav-list class="todo-lists">
         <md-list-item class="todo-list" *ngFor="let todo of todoLists$ | async">
             <h3 md-line> {{todo.title}} </h3>
             <a md-line href="">{{todo.content}}</a>
@@ -30,5 +53,5 @@
             <span>{{todo.time}}</span>
             <md-checkbox>完成</md-checkbox>
         </md-list-item>
-    </md-nav-list>
+    </md-nav-list>-->
 </div>
