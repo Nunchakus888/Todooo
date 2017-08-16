@@ -9,20 +9,21 @@
         flex: 0 0 50%;
     }
     .example-header-image {
-        background-image: url('../../../assets/logo.jpg');
+        /*background-image: url('../../../assets/logo.jpg');*/
         background-size: cover;
+        background: red;
     }
 
 </style>
 
 <div class="todo-list">
-    <button md-button (click)="openDialog()">Launch dialog</button>
+    <!--<button md-button (click)="openDialog()">Launch dialog</button>-->
 
     <md-card class="todo-card" *ngFor="let todo of todoLists$ | async">
         <md-card-header>
             <div md-card-avatar class="example-header-image"></div>
             <md-card-title>{{todo.title}}</md-card-title>
-            <md-card-subtitle>eeasdf</md-card-subtitle>
+            <md-card-subtitle>2017-08-16 12:34:22</md-card-subtitle>
         </md-card-header>
         <!--<img md-card-image src="../../../assets/logo.jpg" style="width: 200px; height: 200px">-->
         <md-card-content>
